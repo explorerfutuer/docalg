@@ -1,7 +1,6 @@
 * KMP 字符串匹配算法
 ** 普通匹配原则
-   (A) str_data: xababccdabefghabc
-   (B) str_src: abcab
+   (A) str_data: xababccdabefghabc  (B) str_src: abcab
    1) A[0] != B[0]
    2) A[1] == B[0] -> A[2] == B[1] -> A[3] != B[2]
    3) A[2] != B[0]
@@ -18,8 +17,8 @@
     | 子串偏移 | 0 | 0 | 0 | 1 | 2 |
     | 原串偏移 | 0 | 1 | 2 | 3 | 3 |
 *** 匹配顺序
-   (A) str_data: xababccdabefghabc
-   (B) str_src: abcab
+   (A) str_data: xababccdabefghabc  (B) str_src: abcab
+
    !: 代表匹配失败，每行代表依次匹配顺序
     | x | a | b | a | b | c | c | d | a |
     |---+---+---+---+---+---+---+---+---|
@@ -29,5 +28,9 @@
     |   |   |   |   |   |   | ! |   |   |
     |   |   |   |   |   |   |   | ! |   |
     |   |   |   |   |   |   |   |   | a |
-
-   
+** 算法实现
+   1. recursion_match
+      对子串进行自我分析，子串内部其他位置与子串头部的匹配度偏移
+   2. target_parse
+      遍历原始数据，通过 1. 获得的结果，当匹配失败时进行跳转
+      
